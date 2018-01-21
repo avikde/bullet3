@@ -3,6 +3,8 @@
 
 #include "Bullet3Common/b3HashMap.h"
 
+#include "SharedMemory/PhysicsClientC_API.h"
+
 struct MinitaurSetupInternalData
 {
 	int m_quadrupedUniqueId;
@@ -278,5 +280,17 @@ int MinitaurSetup::setupMinitaur(class b3RobotSimulatorClientAPI* sim, const b3V
 	resetPose(sim);
 
 	return m_data->m_quadrupedUniqueId;
+}
+
+void MinitaurSetup::testDrawDebugLine(class b3RobotSimulatorClientAPI* sim)
+{
+	b3Vector3 pos;
+	b3Quaternion orn;
+	sim->getBasePositionAndOrientation(m_data->m_quadrupedUniqueId, pos, orn);
+
+	double fromPos[3] = {pos.x, pos.y, pos.z};
+	double toPos[3] = {pos.x, pos.y, pos.z + 0.1};
+	double color[3] = {0, 1, 0};
+	sim->testDrawLine(fromPos, toPos, color, 0.1, 0.1);
 }
 

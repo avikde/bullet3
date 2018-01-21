@@ -226,6 +226,8 @@ public:
 
 	void submitProfileTiming(const std::string&  profileName, int durationInMicroSeconds=1);				
 
+	// test draw
+	void testDrawLine(double fromPos[], double toPos[], double color[], double lineWidth, double lifeTime);
 
 	//////////////// INTERNAL
 

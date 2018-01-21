@@ -1157,3 +1157,9 @@ void b3RobotSimulatorClientAPI::loadSoftBody(const std::string& fileName, double
     b3LoadSoftBodySetCollisionMargin(command, collisionMargin);
     b3SubmitClientCommandAndWaitStatus(m_data->m_physicsClientHandle, command);
 }
+
+void b3RobotSimulatorClientAPI::testDrawLine(double fromPos[], double toPos[], double color[], double lineWidth, double lifeTime)
+{
+	b3SharedMemoryCommandHandle command = b3InitUserDebugDrawAddLine3D(m_data->m_physicsClientHandle, fromPos, toPos, color, lineWidth, lifeTime);
+	b3SubmitClientCommandAndWaitStatus(m_data->m_physicsClientHandle, command);
+}
